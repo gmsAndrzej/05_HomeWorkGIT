@@ -1,41 +1,53 @@
+{
+    const calculate = (currency, amount) => {
 
-let formElement = document.querySelector(".js-form");
-let amountElement = document.querySelector(".js-amount");
-let currencyElement = document.querySelector(".js-currency");
-let resultElement = document.querySelector(".js-result");
+        const rateUSD = 4.41;
+        const rateEuro = 4.64;
+        const rateGBP = 5.47;
 
-let rateUSA = 4.41;
-let rateEuro = 4.64;
-let rateGBP = 5.47;
+        switch (currency) {
 
-formElement.addEventListener("submit", (event) => {
+            case "USD":
+                return (amount / rateUSD);
 
-    event.preventDefault();
+            case "EUR":
+                return (amount / rateEuro);
 
-    let amount = +amountElement.value;
-    let currency = currencyElement.value;
-    let result;
-    let waluta;
+            case "GBP":
+                return (amount / rateGBP);
+        }
 
-    switch (currency) {
-
-        case "USA":
-            result = amount / rateUSA;
-            waluta = "$"
-            break;
-
-        case "EUR":
-            result = amount / rateEuro;
-            waluta = "€"
-            break;
-
-        case "GBP":
-            result = amount / rateGBP;
-            waluta = "£"
-            break;
     }
 
-    resultElement.innerText = `${amount.toFixed(2)} PLN= ${result.toFixed(2)} ${waluta} `;
+    const init = () => {
 
-});
+        const amountElement = document.querySelector(".js-amount");
+        const currencyElement = document.querySelector(".js-currency");
+        const resultElement = document.querySelector(".js-result");
 
+        let amount =+ amountElement.value;
+        let currency = currencyElement.value;
+        let result = calculate(currency, amount);
+        let waluta = currencySign(currency);
+
+        resultElement.innerText = `${amount.toFixed(2)} PLN= ${result.toFixed(2)} ${waluta} `;
+
+    }
+
+    const currencySign = (currency) => {
+
+        if (currency == "USD") return "$"
+        else if (currency == "EUR") return "€"
+        else return "£"
+    }
+
+    const formElement = document.querySelector(".js-form");
+    
+    formElement.addEventListener("submit", (event) => {
+        
+        event.preventDefault();
+        
+        init();
+    });
+
+}
