@@ -4,18 +4,32 @@ html {
 }
 
 *, ::after, ::before {
-
-
     box-sizing: inherit;
 }
-.body{
 
-    font-family:   "Lato", sans-serif ;
-    background-color: hsl(180, 29%, 93%);  }
+.body {
 
-.container{
-max-width: 700px;
-margin: 0px auto ;
-padding: 0 20px;
+    background-color: aliceblue;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    background-position: center;
+    font-family: "Lato", sans-serif;
+    background-image: url("..//image/Calc.jpg");
+    background-repeat: no-repeat;
+
+}
+.container {
+
+    margin: 40px;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 30px black;
+    background-color: rgb(228, 227, 240);
+    flex-basis: 800px;
+    align-self: center;
+    font-size: 20px;
 
 }
